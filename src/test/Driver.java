@@ -1,8 +1,8 @@
-package test;
+package src.test;
 
-import dnd.sheet.*;
-import dnd.util.FreshPlayerParser;
-import dnd.constants.*;
+import src.dnd.sheet.*;
+import src.dnd.util.FreshPlayerParser;
+import src.dnd.constants.*;
 
 public class Driver {
 	public static void main(String args[]){

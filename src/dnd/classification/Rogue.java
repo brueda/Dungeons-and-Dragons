@@ -1,4 +1,4 @@
-package dnd.classification;
+package src.dnd.classification;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,10 +7,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import dnd.constants.DnDClassConst;
+import src.dnd.constants.DnDClassConst;
 
 
-public class Rouge implements DnDClass {
+public class Rogue implements DnDClass {
 	final String ATTACK_GROWTH = DnDClassConst.WEAK_QUERY;
 	final String FORT_GROWTH = DnDClassConst.WEAK_QUERY;
 	final String REF_GROWTH = DnDClassConst.STRONG_QUERY;
@@ -20,7 +20,7 @@ public class Rouge implements DnDClass {
 	int _bonus[];
 	JSONObject _levelBonus;
 	
-	public Rouge(){
+	public Rogue(){
 		_bonus = new int[4];
 		constructJSON(DnDClassConst.STAT_GROWTH_PATH);
 		updateBonus(20);

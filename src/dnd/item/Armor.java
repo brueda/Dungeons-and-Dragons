@@ -1,4 +1,4 @@
-package dnd.item;
+package src.dnd.item;
 
 public class Armor extends Item{
 	int _ac;

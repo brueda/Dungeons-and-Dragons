@@ -1,4 +1,4 @@
-package dnd.entity;
+package src.dnd.entity;
 
 public class Stats {
 	int _hp;

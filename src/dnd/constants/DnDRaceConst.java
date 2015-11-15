@@ -1,4 +1,4 @@
-package dnd.constants;
+package src.dnd.constants;
 
 public class DnDRaceConst {
 	public static final String STR_QUERY = "str";

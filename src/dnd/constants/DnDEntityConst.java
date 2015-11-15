@@ -1,4 +1,4 @@
-package dnd.constants;
+package src.dnd.constants;
 
 public class DnDEntityConst {
 	public static final int SIZE_TINY = 0;

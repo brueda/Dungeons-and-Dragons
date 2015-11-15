@@ -1,4 +1,4 @@
-package dnd.util;
+package src.dnd.util;
 
 
 import java.io.File;
@@ -8,7 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import dnd.sheet.CharacterSheet;
+import src.dnd.sheet.CharacterSheet;
 
 public class FreshPlayerParser {
 	final String FRESH_PLAYERS_DIR = "players/fresh_sheets/";

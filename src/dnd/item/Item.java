@@ -1,4 +1,4 @@
-package dnd.item;
+package src.dnd.item;
 
 public class Item {
 	String _name;

@@ -1,12 +1,12 @@
-package dnd.sheet;
+package src.dnd.sheet;
 
 import java.util.ArrayList;
 
-import dnd.item.*;
-import dnd.race.*;
-import dnd.classification.*;
-import dnd.constants.*;
-import dnd.entity.Stats;
+import src.dnd.item.*;
+import src.dnd.race.*;
+import src.dnd.classification.*;
+import src.dnd.constants.*;
+import src.dnd.entity.Stats;
 
 public class CharacterSheet {
 	String _playerName;
@@ -160,7 +160,7 @@ public class CharacterSheet {
 			_class = new Ranger();
 			break;
 		case DnDClassConst.ROGUE:
-			_class = new Rouge();
+			_class = new Rogue();
 			break;
 		case DnDClassConst.SORCERER:
 			_class = new Sorcerer();

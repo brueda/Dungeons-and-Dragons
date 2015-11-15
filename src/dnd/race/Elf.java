@@ -1,6 +1,6 @@
-package dnd.race;
+package src.dnd.race;
 
-import dnd.constants.DnDRaceConst;
+import src.dnd.constants.DnDRaceConst;
 
 public class Elf extends DnDRace{
 

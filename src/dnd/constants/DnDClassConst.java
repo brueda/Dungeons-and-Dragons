@@ -1,4 +1,4 @@
-package dnd.constants;
+package src.dnd.constants;
 
 public class DnDClassConst {
 	public static final int BARBARIAN = 0;
