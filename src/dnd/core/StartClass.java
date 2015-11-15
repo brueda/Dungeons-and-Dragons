@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 import dnd.map.CreateWallState;
 import dnd.map.Grid;
+import dnd.sheet.CharacterSheet;
+import dnd.sheet.CreateCharacterState;
 
 public class StartClass extends Applet implements Runnable, KeyListener, MouseListener{
 
@@ -24,6 +26,7 @@ public class StartClass extends Applet implements Runnable, KeyListener, MouseLi
 	{	}
 	
 	public static String state;
+	public static ArrayList<CharacterSheet> _chars;
 	private URL base;
 	private Graphics graphic;
 	private Image image;
@@ -41,7 +44,7 @@ public class StartClass extends Applet implements Runnable, KeyListener, MouseLi
 		frame.setTitle("D&D Revolution");
 		Grid.initialize();
 		state = "Start";
-		_curState = new CreateWallState();
+		_curState = new CreateCharacterState();
 		try
 		{
 			base = getDocumentBase();

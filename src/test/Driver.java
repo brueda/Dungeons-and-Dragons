@@ -6,8 +6,8 @@ import dnd.constants.*;
 
 public class Driver {
 	public static void main(String args[]){
-		Driver drive = new Driver();
-		drive.barbTest();
+//		Driver drive = new Driver();
+//		drive.barbTest();
 		new FreshPlayerParser().generateFreshCharacters();
 	}
 	

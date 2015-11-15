@@ -14,6 +14,8 @@ import dnd.constants.DnDRaceConst;
 import dnd.sheet.CharacterSheet;
 
 public class FreshPlayerParser {
+	String workingDir = System.getProperty("user.dir");
+	String newDir = workingDir.substring(0,workingDir.length()-3);
 	final String FRESH_PLAYERS_DIR = "players/fresh_sheets/";
 	CharacterSheet _curSheet;
 	
@@ -50,6 +52,7 @@ public class FreshPlayerParser {
 	public ArrayList<CharacterSheet> generateFreshCharacters(){
 		ArrayList<CharacterSheet> characters = new ArrayList<CharacterSheet>();
 		File files[] = new File(FRESH_PLAYERS_DIR).listFiles();
+		System.out.println(FRESH_PLAYERS_DIR);
 		for(File file:files){
 			characters.add(parseFreshCharacter(file));
 		}

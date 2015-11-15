@@ -1,0 +1,15 @@
+Name:Norbert
+Character Name:Timmy Hort
+Gender:Male
+Height:90
+Weight:100
+Alignment:Neutral
+Class:Druid
+Race:Human
+Roll.Strength:13
+Roll.Dexterity:14
+Roll.Constituation:14
+Roll.Intelligence:14
+Roll.Wisdom:17
+Roll.Charisma:14
+Speed:30

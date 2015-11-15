@@ -1,0 +1,15 @@
+Name:Ronald
+Character Name:Tommy Jenkins
+Gender:Male
+Height:95
+Weight:110
+Alignment:Chaotic Neutral
+Class:Wizard
+Race:Human
+Roll.Strength:7
+Roll.Dexterity:8
+Roll.Constituation:14
+Roll.Intelligence:20
+Roll.Wisdom:8
+Roll.Charisma:8
+Speed:50

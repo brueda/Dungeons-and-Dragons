@@ -14,12 +14,14 @@ public class PositionEnemyState extends State{
 	private Color lighterGray = new Color(224,224,224);
 	private ArrayList<String> _enemyNames;
 	private String _strString, _dexString, _conString, 
-		_intString, _wisString, _chaString;
+		_intString, _wisString, _chaString, _maxHPString,
+		_sizeString, _speedString;
 	private int _whichField;
 	public PositionEnemyState() {
 		_enemyNames = new ArrayList<String>();
 		_strString = ""; _dexString = ""; _conString = "";
 		_intString = ""; _wisString = ""; _chaString = "";
+		_maxHPString = ""; _sizeString = ""; _speedString = "";
 		_whichField = 0;
 	}
 
@@ -95,7 +97,33 @@ public class PositionEnemyState extends State{
 				g.fillRect(881, 96, 19, 22);
 				g.setColor(Color.BLACK);
 			}
-			g.drawString(_chaString, 883, 110);
+			// maxHP
+			g.drawString(" HP:", 710, 145);
+			g.drawRect(740, 130, 20, 23);
+			if(_whichField == 7){
+				g.setColor(Color.PINK);
+				g.fillRect(741, 131, 19, 22);
+				g.setColor(Color.BLACK);
+			}
+			g.drawString(_maxHPString, 742, 145);
+			// size
+			g.drawString("SIZ:", 780, 145);
+			g.drawRect(810, 130, 20, 23);
+			if(_whichField == 8){
+				g.setColor(Color.PINK);
+				g.fillRect(811, 131, 19, 22);
+				g.setColor(Color.BLACK);
+			}
+			g.drawString(_sizeString, 812, 145);
+			// speed
+			g.drawString("SPD:", 850, 145);
+			g.drawRect(880, 131, 20, 23);
+			if(_whichField == 9){
+				g.setColor(Color.PINK);
+				g.fillRect(881, 132, 19, 22);
+				g.setColor(Color.BLACK);
+			}
+			g.drawString(_speedString, 883, 145);
 		}
 		for(Wall wl:Grid._walls){
 			wl.render(g);
@@ -130,6 +158,18 @@ public class PositionEnemyState extends State{
 		//CHA textbox
 		else if(x < 900 && x > 880 && y < 118 && y > 95){
 			_whichField = 6;
+		}
+		//maxHP textbox
+		else if(x < 760 && x > 740 && y < 153 && y > 130){
+			_whichField = 7;
+		}
+		//size textbox
+		else if(x < 840 && x > 810 && y < 153 && y > 130){
+			_whichField = 8;
+		}
+		//speed textbox
+		else if(x < 900 && x > 880 && y < 153 && y > 130){
+			_whichField = 9;
 		}
 		else{
 			_whichField = 0;

@@ -5,17 +5,14 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+import dnd.core.StartClass;
 import dnd.core.State;
 
 public class PositionCharState  extends State {
 
 	private Color lighterGray = new Color(224,224,224);
-	private ArrayList<String> _charNames;
 	private int index;
 	public PositionCharState() {
-		_charNames = new ArrayList<String>();
-		_charNames.add("Ben"); _charNames.add("Benjamin"); _charNames.add("Pat");
-		_charNames.add("PattyCakes"); _charNames.add("DOH");
 		index = 0;
 	}
 
@@ -43,8 +40,8 @@ public class PositionCharState  extends State {
 			ci.render(g);
 		}
 		g.setColor(Color.BLACK);
-		if(index < _charNames.size()){
-			g.drawString("Click square to place " + _charNames.get(index), 740, 50);
+		if(index < StartClass._chars.size()){
+			g.drawString("Click square to place " + StartClass._chars.get(index).getCharacterName(), 740, 50);
 			g.drawString("Press Enter to place. Press Space to skip.", 710, 70);
 		}
 		else{
@@ -52,7 +49,7 @@ public class PositionCharState  extends State {
 			g.drawString("Press Space to continue.", 750, 70);
 		}
 		if(index != 0){
-			g.drawString("Press BackSpace to go back.", 730, 90);
+			g.drawString("Press Back Space to go back.", 730, 90);
 		}
 	}
 
@@ -80,12 +77,12 @@ public class PositionCharState  extends State {
 			{
 			case KeyEvent.VK_ENTER:
 				System.out.println("ENTER!");
-				if(index < _charNames.size() && !Grid._grid[Grid._selectedTile._xIndex][Grid._selectedTile._yIndex].is_occupied()){
+				if(index < StartClass._chars.size() && !Grid._grid[Grid._selectedTile._xIndex][Grid._selectedTile._yIndex].is_occupied()){
 					Grid._charImage.add(new CharImage(x,y));
 					Grid._grid[Grid._selectedTile._xIndex][Grid._selectedTile._yIndex].set_occupied(true);
 				}
 			case KeyEvent.VK_SPACE:
-				if(index < _charNames.size()){
+				if(index < StartClass._chars.size()){
 					index++;
 				}else{
 					Grid._selectedTile = null;
