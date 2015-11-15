@@ -3,10 +3,8 @@ package src.dnd.map;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
->>>>>>> map
+
 
 import src.dnd.core.State;
 

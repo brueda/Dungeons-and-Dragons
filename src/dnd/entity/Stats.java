@@ -1,7 +1,7 @@
 package src.dnd.entity;
 
 public class Stats {
-	int _hp;
+	int _maxHp;
 	int _str;
 	int _dex;
 	int _con;
@@ -11,16 +11,8 @@ public class Stats {
 	int _size;
 	int _speed;
 	
-	public int removeHealth(int damage){
-		_hp -= damage;
-		if(_hp < 0){
-			_hp = 0;
-		}
-		return _hp;
-	}
-	
-	public void initStats(int hp, int str, int dex, int con, int intel, int wis, int cha, int size, int speed){
-		_hp = hp;
+	public void initStats(int maxHp, int str, int dex, int con, int intel, int wis, int cha, int size, int speed){
+		_maxHp = maxHp;
 		_str = str;
 		_dex = dex;
 		_con = con;
@@ -56,6 +48,6 @@ public class Stats {
 	}
 	
 	public int getHP(){
-		return _hp;
+		return _maxHp;
 	}
 }
