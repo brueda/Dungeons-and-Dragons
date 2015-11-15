@@ -23,6 +23,10 @@ public class Stats {
 		_speed = speed;
 	}
 	
+	public int getMaxHp(){
+		return _maxHp;
+	}
+	
 	public int getStr(){
 		return _str;
 	}

@@ -59,7 +59,7 @@ public class FreshPlayerParser {
 	private CharacterSheet parseFreshCharacter(File file){
 		_curSheet = new CharacterSheet();
 		
-		int rollDie;
+		int rollDie = 0;
 		int size;
 		int[] stats = new int[9];
 		Scanner scanner;
@@ -86,6 +86,7 @@ public class FreshPlayerParser {
 					_curSheet.setAlignment(elements[1]);
 				}else if(type.equals("class")){
 					int clas = _curSheet.setClass(findClass(elements[1].replaceAll("[^A-Za-z0-9]", "").toLowerCase()));
+					rollDie = diceCheck(clas);
 				}else if(type.equals("race")){
 					int race = _curSheet.setRace(findRace(elements[1].replaceAll("[^A-Za-z0-9]", "").toLowerCase()));
 					if(race == DnDRaceConst.HALFLING || race == DnDRaceConst.GNOME){
@@ -116,6 +117,7 @@ public class FreshPlayerParser {
 			}
 			
 			//calc for health
+			stats[0] = (stats[3] + _curSheet.getRace().getConMod()-10)/2 + rollDie;
 			_curSheet.makeStats(stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], stats[6], stats[7], stats[8]);
 			_curSheet.printStats();
 			scanner.close();
@@ -177,5 +179,21 @@ public class FreshPlayerParser {
 			return DnDClassConst.WIZARD;
 		}
 		return -1;
+	}
+	
+	private int diceCheck(int classId){
+		if(classId == DnDClassConst.BARBARIAN){
+			return 12;
+		}
+		if(classId == DnDClassConst.PALADIN || classId == DnDClassConst.FIGHTER){
+			return 10;
+		}
+		if(classId == DnDClassConst.BARD || classId == DnDClassConst.ROGUE){
+			return 6;
+		}
+		if(classId == DnDClassConst.WIZARD || classId == DnDClassConst.SORCERER){
+			return 4;
+		}
+		return 8;
 	}
 }

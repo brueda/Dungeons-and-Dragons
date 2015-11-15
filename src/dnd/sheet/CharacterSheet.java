@@ -281,6 +281,10 @@ public class CharacterSheet {
 		_alignment = alignment;
 	}
 	
+	public DnDRace getRace(){
+		return _race;
+	}
+	
 	public void printStats(){
 		System.out.println("Player Name: " + _playerName);
 		System.out.println("Character Name: " + _characterName);
@@ -288,6 +292,7 @@ public class CharacterSheet {
 		System.out.println("Weight: " + _weight);
 		System.out.println("Height: " + _height);
 		System.out.println("Alignment: " + _alignment);
+		System.out.println("HP: " + _stats.getMaxHp());
 	}
 	
 	
