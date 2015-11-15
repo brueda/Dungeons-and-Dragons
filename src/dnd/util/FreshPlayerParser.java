@@ -8,6 +8,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import dnd.constants.DnDClassConst;
+import dnd.constants.DnDEntityConst;
+import dnd.constants.DnDRaceConst;
 import dnd.sheet.CharacterSheet;
 
 public class FreshPlayerParser {
@@ -21,8 +24,8 @@ public class FreshPlayerParser {
 			writer.println("Name:");
 			writer.println("Character Name:");
 			writer.println("Gender:");
-			writer.println("Height");
-			writer.println("Weight");
+			writer.println("Height:");
+			writer.println("Weight:");
 			writer.println("Alignment:");
 			writer.println("Class:");
 			writer.println("Race:");
@@ -55,9 +58,10 @@ public class FreshPlayerParser {
 	
 	private CharacterSheet parseFreshCharacter(File file){
 		_curSheet = new CharacterSheet();
-		int[] stats = new int[9];
+		
 		int rollDie;
 		int size;
+		int[] stats = new int[9];
 		Scanner scanner;
 		try {
 			scanner = new Scanner(file);
@@ -69,40 +73,51 @@ public class FreshPlayerParser {
 				
 				//I'm ashamed of myself
 				if(type.equals("name")){
-					
+					_curSheet.setName(elements[1]);
 				}else if(type.equals("charactername")){
-					
+					_curSheet.setCharacterName(elements[1]);
 				}else if(type.equals("gender")){
-					
+					_curSheet.setGender(elements[1]);
 				}else if(type.equals("height")){
-					
+					_curSheet.setHeight(elements[1]);
 				}else if(type.equals("weight")){
-					
+					_curSheet.setWeight(elements[1]);
 				}else if(type.equals("alignment")){
-					
+					_curSheet.setAlignment(elements[1]);
 				}else if(type.equals("class")){
-					
+					int clas = _curSheet.setClass(findClass(elements[1].replaceAll("[^A-Za-z0-9]", "").toLowerCase()));
 				}else if(type.equals("race")){
-					
+					int race = _curSheet.setRace(findRace(elements[1].replaceAll("[^A-Za-z0-9]", "").toLowerCase()));
+					if(race == DnDRaceConst.HALFLING || race == DnDRaceConst.GNOME){
+						size = DnDEntityConst.SIZE_SMALL;
+					}else{
+						size = DnDEntityConst.SIZE_MEDIUM;
+					}
+					stats[7] = size;
 				}else if(type.equals("rollstrength")){
-					stats[1] = Integer.getInteger(elements[1]);
+					
+					stats[1] = Integer.parseInt(elements[1].replaceAll("[^A-Za-z0-9]", ""));
 				}else if(type.equals("rolldexterity")){
-					stats[2] = Integer.getInteger(elements[1]);
+					stats[2] = Integer.parseInt(elements[1].replaceAll("[^A-Za-z0-9]", ""));
 				}else if(type.equals("rollconstituation")){
-					stats[3] = Integer.getInteger(elements[1]);
+					stats[3] = Integer.parseInt(elements[1].replaceAll("[^A-Za-z0-9]", ""));
 				}else if(type.equals("rollintelligence")){
-					stats[4] = Integer.getInteger(elements[1]);
+					stats[4] = Integer.parseInt(elements[1].replaceAll("[^A-Za-z0-9]", ""));
 				}else if(type.equals("rollwisdom")){
-					stats[5] = Integer.getInteger(elements[1]);
+					stats[5] = Integer.parseInt(elements[1].replaceAll("[^A-Za-z0-9]", ""));
 				}else if(type.equals("rollcharisma")){
-					stats[6] = Integer.getInteger(elements[1]);
+					stats[6] = Integer.parseInt(elements[1].replaceAll("[^A-Za-z0-9]", ""));
 				}else if(type.equals("speed")){
-					stats[8] = Integer.getInteger(elements[1]);
+					stats[8] = Integer.parseInt(elements[1].replaceAll("[^A-Za-z0-9]", ""));
 				}else{
 					System.err.println("Ooops, shouldn't be here");
 				}
 				
 			}
+			
+			//calc for health
+			_curSheet.makeStats(stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], stats[6], stats[7], stats[8]);
+			_curSheet.printStats();
 			scanner.close();
 		} catch (FileNotFoundException e) {
 			
@@ -115,5 +130,52 @@ public class FreshPlayerParser {
 		
 		
 		return _curSheet;
+	}
+	
+	private int findRace(String element){
+		if(element.equals("human")){
+			return DnDRaceConst.HUMAN;
+		}else if(element.equals("elf")){
+			return DnDRaceConst.ELF;
+		}else if(element.equals("gnome")){
+			return DnDRaceConst.GNOME;
+		}else if(element.equals("dwarf")){
+			return DnDRaceConst.DWARF;
+		}else if(element.equals("halfelf")){
+			return DnDRaceConst.HALF_ELF;
+		}else if(element.equals("halforc")){
+			return DnDRaceConst.HALF_ORC;
+		}else if(element.equals("halfling")){
+			return DnDRaceConst.HALFLING;
+		}else{
+			return -1;
+		}
+	}
+	
+	private int findClass(String element){
+		if(element.equals("barbarian")){
+			return DnDClassConst.BARBARIAN;
+		}else if(element.equals("bard")){
+			return DnDClassConst.BARD;
+		}else if(element.equals("cleric")){
+			return DnDClassConst.CLERIC;
+		}else if(element.equals("druid")){
+			return DnDClassConst.DRUID;
+		}else if(element.equals("fighter")){
+			return DnDClassConst.FIGHTER;
+		}else if(element.equals("monk")){
+			return DnDClassConst.MONK;
+		}else if(element.equals("paladin")){
+			return DnDClassConst.PALADIN;
+		}else if(element.equals("ranger")){
+			return DnDClassConst.RANGER;
+		}else if(element.equals("rogue")){
+			return DnDClassConst.ROGUE;
+		}else if(element.equals("sorcerer")){
+			return DnDClassConst.SORCERER;
+		}else if(element.equals("wizard")){
+			return DnDClassConst.WIZARD;
+		}
+		return -1;
 	}
 }

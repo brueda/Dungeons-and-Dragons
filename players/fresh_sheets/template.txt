@@ -1,0 +1,15 @@
+Name:Patrick
+Character Name:Jerry McSwordGuy
+Gender:Male
+Height:100
+Weight:100
+Alignment:Chaotic Evil
+Class:Bard
+Race:Human
+Roll.Strength:19
+Roll.Dexterity:14
+Roll.Constituation:14
+Roll.Intelligence:14
+Roll.Wisdom:14
+Roll.Charisma:14
+Speed:30

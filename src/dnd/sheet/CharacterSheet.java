@@ -44,6 +44,11 @@ public class CharacterSheet {
 		setClass(classId);
 		setRace(raceId);
 	}
+	
+	public void makeStats(int maxHp, int str, int dex, int con, int intel, int wis, int cha, int size, int speed){
+		_stats = new Stats();
+		_stats.initStats(maxHp, str, dex, con, intel, wis, cha, size, speed);
+	}
 
 	public int getStrMod(){
 		int total = _race.getStrMod() + _stats.getStr();
@@ -152,22 +157,28 @@ public class CharacterSheet {
 //			break;
 		case DnDClassConst.MONK:
 			_class = new Monk();
-			break;
+			return DnDClassConst.MONK;
+//			break;
 		case DnDClassConst.PALADIN:
 			_class = new Paladin();
-			break;
+			return DnDClassConst.PALADIN;
+//			break;
 		case DnDClassConst.RANGER:
 			_class = new Ranger();
-			break;
+			return DnDClassConst.RANGER;
+//			break;
 		case DnDClassConst.ROGUE:
 			_class = new Rogue();
-			break;
+			return DnDClassConst.ROGUE;
+//			break;
 		case DnDClassConst.SORCERER:
 			_class = new Sorcerer();
-			break;
+			return DnDClassConst.SORCERER;
+//			break;
 		case DnDClassConst.WIZARD:
 			_class = new Wizard();
-			break;
+			return DnDClassConst.WIZARD;
+//			break;
 		default:
 			System.err.println("Error: Character ID not recognized.");
 			break;
@@ -180,25 +191,32 @@ public class CharacterSheet {
 		switch(raceId){
 		case DnDRaceConst.HUMAN:
 			_race = new Human();
-			break;
+			return DnDRaceConst.HUMAN;
+//			break;
 		case DnDRaceConst.ELF:
 			_race = new Elf();
-			break;
+			return DnDRaceConst.ELF;
+//			break;
 		case DnDRaceConst.DWARF:
 			_race = new Dwarf();
-			break;
+			return DnDRaceConst.DWARF;
+//			break;
 		case DnDRaceConst.HALF_ELF:
 			_race = new HalfElf();
-			break;
+			return DnDRaceConst.HALF_ELF;
+//			break;
 		case DnDRaceConst.GNOME:
 			_race = new Gnome();
-			break;
+			return DnDRaceConst.GNOME;
+//			break;
 		case DnDRaceConst.HALF_ORC:
 			_race = new HalfOrc();
-			break;
+			return DnDRaceConst.HALF_ORC;
+//			break;
 		case DnDRaceConst.HALFLING:
 			_race = new Halfling();
-			break;
+			return DnDRaceConst.HALFLING;
+//			break;
 		default:
 			System.err.println("Error: Race ID not recognized");
 			break;
@@ -238,5 +256,39 @@ public class CharacterSheet {
 	private int calcStat(int total){
 		return (total-10)/2;
 	}
+	
+	public void setName(String name){
+		_playerName = name;
+	}
+	
+	public void setCharacterName(String name){
+		_characterName = name;
+	}
+	
+	public void setGender(String gender){
+		_gender = gender;
+	}
+	
+	public void setHeight(String height){
+		_height = height;
+	}
+	
+	public void setWeight(String weight){
+		_weight = weight;
+	}
+	
+	public void setAlignment(String alignment){
+		_alignment = alignment;
+	}
+	
+	public void printStats(){
+		System.out.println("Player Name: " + _playerName);
+		System.out.println("Character Name: " + _characterName);
+		System.out.println("Gender: " + _gender);
+		System.out.println("Weight: " + _weight);
+		System.out.println("Height: " + _height);
+		System.out.println("Alignment: " + _alignment);
+	}
+	
 	
 }

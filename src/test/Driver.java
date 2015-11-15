@@ -8,7 +8,7 @@ public class Driver {
 	public static void main(String args[]){
 		Driver drive = new Driver();
 		drive.barbTest();
-		new FreshPlayerParser().generateTemplateCharSheet();
+		new FreshPlayerParser().generateFreshCharacters();
 	}
 	
 	public void walletTest(){
