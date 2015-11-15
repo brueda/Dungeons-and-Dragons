@@ -1,6 +1,6 @@
-package src.dnd.race;
+package dnd.race;
 
-import src.dnd.constants.DnDRaceConst;
+import dnd.constants.DnDRaceConst;
 
 public class Gnome extends DnDRace{
 	

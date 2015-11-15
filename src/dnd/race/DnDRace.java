@@ -1,4 +1,4 @@
-package src.dnd.race;
+package dnd.race;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import src.dnd.constants.DnDRaceConst;
+import dnd.constants.DnDRaceConst;
 
 public class DnDRace {
 	int _strMod;

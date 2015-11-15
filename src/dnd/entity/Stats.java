@@ -1,4 +1,4 @@
-package src.dnd.entity;
+package dnd.entity;
 
 public class Stats {
 	int _maxHp;

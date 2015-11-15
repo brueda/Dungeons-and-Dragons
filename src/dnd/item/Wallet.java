@@ -1,4 +1,4 @@
-package src.dnd.item;
+package dnd.item;
 
 public class Wallet {
 	final int WEIGHT_MOD = 10; // every 10 coins is 1lb

@@ -1,12 +1,12 @@
-package src.dnd.sheet;
+package dnd.sheet;
 
 import java.util.ArrayList;
 
-import src.dnd.item.*;
-import src.dnd.race.*;
-import src.dnd.classification.*;
-import src.dnd.constants.*;
-import src.dnd.entity.Stats;
+import dnd.item.*;
+import dnd.race.*;
+import dnd.classification.*;
+import dnd.constants.*;
+import dnd.entity.Stats;
 
 public class CharacterSheet {
 	String _playerName;

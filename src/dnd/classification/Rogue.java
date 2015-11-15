@@ -1,4 +1,4 @@
-package src.dnd.classification;
+package dnd.classification;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import src.dnd.constants.DnDClassConst;
+import dnd.constants.DnDClassConst;
 
 
 public class Rogue implements DnDClass {

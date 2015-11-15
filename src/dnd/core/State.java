@@ -1,4 +1,4 @@
-package src.dnd.core;
+package dnd.core;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;

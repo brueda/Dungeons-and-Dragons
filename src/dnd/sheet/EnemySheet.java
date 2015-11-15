@@ -1,6 +1,6 @@
-package src.dnd.sheet;
+package dnd.sheet;
 
-import src.dnd.entity.Stats;
+import dnd.entity.Stats;
 
 public class EnemySheet {
 

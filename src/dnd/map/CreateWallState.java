@@ -1,12 +1,12 @@
-package src.dnd.map;
+package dnd.map;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import src.dnd.core.StartClass;
-import src.dnd.core.State;
+import dnd.core.StartClass;
+import dnd.core.State;
 
 public class CreateWallState extends State{
 

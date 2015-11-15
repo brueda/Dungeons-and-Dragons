@@ -1,6 +1,6 @@
 // Created by Hyen Bin Doh
 
-package src.dnd.core;
+package dnd.core;
 
 import java.applet.Applet;
 import java.awt.Color;
@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
-import src.dnd.map.CreateWallState;
-import src.dnd.map.Grid;
+import dnd.map.CreateWallState;
+import dnd.map.Grid;
 
 public class StartClass extends Applet implements Runnable, KeyListener, MouseListener{
 

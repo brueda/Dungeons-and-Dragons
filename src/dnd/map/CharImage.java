@@ -1,4 +1,4 @@
-package src.dnd.map;
+package dnd.map;
 
 import java.awt.Color;
 import java.awt.Graphics;

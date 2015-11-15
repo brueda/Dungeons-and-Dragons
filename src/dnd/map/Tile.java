@@ -1,4 +1,4 @@
-package src.dnd.map;
+package dnd.map;
 
 
 public class Tile {

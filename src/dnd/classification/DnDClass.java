@@ -1,4 +1,4 @@
-package src.dnd.classification;
+package dnd.classification;
 
 public interface DnDClass {
 	

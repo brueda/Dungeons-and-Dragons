@@ -1,11 +1,11 @@
-package src.dnd.map;
+package dnd.map;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import src.dnd.core.State;
+import dnd.core.State;
 
 public class PositionCharState  extends State {
 

@@ -1,4 +1,4 @@
-package src.dnd.item;
+package dnd.item;
 
 public class Weapon extends Item{
 	String _dmgDice; // dice type and quant. Player dice rolls are still manual
