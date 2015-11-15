@@ -1,6 +1,6 @@
 // Created by Hyen Bin Doh
 
-package src.dnd.map;
+package src.dnd.core;
 
 import java.applet.Applet;
 import java.awt.Color;
@@ -15,8 +15,10 @@ import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
 
-import src.dnd.test.Animation;
-import src.dnd.test.Drawing;
+import javax.swing.JButton;
+
+import src.dnd.map.CreateWallState;
+import src.dnd.map.Grid;
 
 public class StartClass extends Applet implements Runnable, KeyListener, MouseListener{
 
@@ -27,16 +29,14 @@ public class StartClass extends Applet implements Runnable, KeyListener, MouseLi
 	private URL base;
 	private Graphics graphic;
 	private Image image, background1, background2, background3;
-	private ArrayList<Drawing> drawings;
-	private Animation backanim;
 	private Rectangle[] tile = new Rectangle[900];
-	private State _curState;
+	public static State _curState;
 	
 
 	@Override
 	public void init()
 	{
-		setSize(700, 700);
+		setSize(1000, 700);
 		setBackground(Color.WHITE);
 		setFocusable(true);
 		addKeyListener(this);
@@ -52,7 +52,7 @@ public class StartClass extends Applet implements Runnable, KeyListener, MouseLi
 		}
 		catch (Exception e)
 		{
-
+				System.err.println("Exception at StartClass init()\n");
 		}
 		for(int i=0; i < 900; i++){
 			tile[i] = new Rectangle(20,20);
@@ -107,6 +107,11 @@ public class StartClass extends Applet implements Runnable, KeyListener, MouseLi
 	{
 		_curState.render(g);
 	}
+
+	public void setCurrentState(State s){
+		_curState = s;
+	}
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX();
@@ -139,7 +144,6 @@ public class StartClass extends Applet implements Runnable, KeyListener, MouseLi
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("Key Pressed!");
 		_curState.handleKeyPressed(e);
 	}
 

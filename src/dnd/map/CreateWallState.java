@@ -5,12 +5,16 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-public class CreateWallState implements State{
+import src.dnd.core.StartClass;
+import src.dnd.core.State;
 
-	private Tile _selectedTile;
-	private ArrayList<Wall> _walls = new ArrayList<Wall>();
+public class CreateWallState extends State{
+
 	private Color lighterGray = new Color(224,224,224);
+	private String prompt = "Press Space to finish";
+	private boolean continueConfirm;
 	public CreateWallState() {
+		continueConfirm = false;
 	}
 
 	@Override
@@ -22,7 +26,17 @@ public class CreateWallState implements State{
 			g.drawLine(i*24+50, 50, i*24+50, 650); // going left
 			g.drawLine(50, i*24+50, 650, i*24+50); // going down
 		}
-		for(Wall wl:_walls){
+		g.setColor(Color.BLACK);
+		g.drawString(prompt, 750, 50);
+		if(Grid._selectedTile != null){
+			g.setColor(Color.CYAN);
+			//convert index to upper left coordinates
+			int x1 = Grid._selectedTile._xIndex*24+50;
+			int y1 = Grid._selectedTile._yIndex*24+50;
+			//slightly smaller square to let the edges show
+			g.fillRect(x1+1, y1+1, 23, 23);
+		}
+		for(Wall wl:Grid._walls){
 			wl.render(g);
 		}
 	}
@@ -38,17 +52,18 @@ public class CreateWallState implements State{
 		int yTemp = (y-50)%24;
 		y = y - yTemp;
 		int yTile = (y-50)/24;
-		
-		_selectedTile = Grid._grid[xTile][yTile];
-		
+
+		Grid._selectedTile = Grid._grid[xTile][yTile];
+
 		System.out.println("X Corner :" + xTile + " Y Corner: " + yTile);
 	}
 
 	@Override
 	public void handleKeyPressed(KeyEvent e) {
-		if(_selectedTile != null){
-			int x1 = _selectedTile._xIndex*24+50;
-			int y1 = _selectedTile._yIndex*24+50;
+		if(Grid._selectedTile != null){
+			prompt = "Press Space to finish";
+			int x1 = Grid._selectedTile._xIndex*24+50;
+			int y1 = Grid._selectedTile._yIndex*24+50;
 			int x2 = x1;
 			int y2 = y1;
 			boolean isAddition = true;
@@ -58,37 +73,51 @@ public class CreateWallState implements State{
 				System.out.println("UP!");
 				x2 = x1+24;
 				y2 = y1;
-				isAddition = _selectedTile.set_walls(Tile.UP);
+				isAddition = Grid._selectedTile.set_walls(Tile.UP);
+				continueConfirm = false;
 				break;
 			case KeyEvent.VK_DOWN:
 				System.out.println("DOWN!");
 				x2 = x1 + 24;
 				y1 = y2 = y1+24;
-				isAddition = _selectedTile.set_walls(Tile.DOWN);
+				isAddition = Grid._selectedTile.set_walls(Tile.DOWN);
+				continueConfirm = false;
 				break;
 			case KeyEvent.VK_LEFT:
 				System.out.println("LEFT!");
 				x2 = x1;
 				y2 = y1+24;
-				isAddition = _selectedTile.set_walls(Tile.LEFT);
+				isAddition = Grid._selectedTile.set_walls(Tile.LEFT);
+				continueConfirm = false;
 				break;
 			case KeyEvent.VK_RIGHT:
 				System.out.println("RIGHT!");
 				x1 = x2 = x1+24;
 				y2 = y1+24;
-				isAddition = _selectedTile.set_walls(Tile.RIGHT);
+				isAddition = Grid._selectedTile.set_walls(Tile.RIGHT);
+				continueConfirm = false;
+				break;
+			case KeyEvent.VK_SPACE:
+				if(continueConfirm){
+					Grid._selectedTile = null;
+					setNewState(new PositionCharState());
+				}
+				else{
+					prompt = "Press Space again to confirm";
+					continueConfirm = true;
+				}
 				break;
 			default:
 				System.out.println("Some other key...");
+				continueConfirm = false;
 			}
 			if(isAddition){
-				System.out.println("\n IN CREATE WALL KEY PRESS IF \n");
-				_walls.add(new Wall(x1,y1,x2,y2));
+				Grid._walls.add(new Wall(x1,y1,x2,y2));
 			}
 			else{
-				for(Wall wl:_walls){
+				for(Wall wl:Grid._walls){
 					if(wl.isEqual(x1, y1, x2, y2)){
-						_walls.remove(wl);
+						Grid._walls.remove(wl);
 						break;
 					}
 				}
@@ -99,5 +128,4 @@ public class CreateWallState implements State{
 			System.err.println("FUCCCCCKKKKKKKKKK");
 		}
 	}
-
 }
