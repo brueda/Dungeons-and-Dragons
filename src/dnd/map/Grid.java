@@ -2,10 +2,13 @@ package dnd.map;
 
 import java.util.ArrayList;
 
+import dnd.sheet.EnemySheet;
+
 public class Grid {
 	public static Tile[][] _grid = new Tile[25][25];
 	public static ArrayList<Wall> _walls = new ArrayList<Wall>();
 	public static ArrayList<CharImage> _charImage = new ArrayList<CharImage>();
+	public static ArrayList<EnemySheet> _enemies = new ArrayList<EnemySheet>();
 	public static Tile _selectedTile;
 	public static void initialize(){
 		for(int b=0; b<25; b++){

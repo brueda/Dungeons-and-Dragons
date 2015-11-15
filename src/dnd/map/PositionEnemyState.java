@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 
 import dnd.core.State;
+import dnd.entity.Stats;
+import dnd.sheet.EnemySheet;
 
 public class PositionEnemyState extends State{
 
@@ -97,15 +99,16 @@ public class PositionEnemyState extends State{
 				g.fillRect(881, 96, 19, 22);
 				g.setColor(Color.BLACK);
 			}
+			g.drawString(_chaString, 882, 110);
 			// maxHP
 			g.drawString(" HP:", 710, 145);
-			g.drawRect(740, 130, 20, 23);
+			g.drawRect(735, 130, 30, 23);
 			if(_whichField == 7){
 				g.setColor(Color.PINK);
-				g.fillRect(741, 131, 19, 22);
+				g.fillRect(736, 131, 29, 22);
 				g.setColor(Color.BLACK);
 			}
-			g.drawString(_maxHPString, 742, 145);
+			g.drawString(_maxHPString, 739, 145);
 			// size
 			g.drawString("SIZ:", 780, 145);
 			g.drawRect(810, 130, 20, 23);
@@ -117,10 +120,10 @@ public class PositionEnemyState extends State{
 			g.drawString(_sizeString, 812, 145);
 			// speed
 			g.drawString("SPD:", 850, 145);
-			g.drawRect(880, 131, 20, 23);
+			g.drawRect(880, 131, 30, 23);
 			if(_whichField == 9){
 				g.setColor(Color.PINK);
-				g.fillRect(881, 132, 19, 22);
+				g.fillRect(881, 132, 29, 22);
 				g.setColor(Color.BLACK);
 			}
 			g.drawString(_speedString, 883, 145);
@@ -190,6 +193,18 @@ public class PositionEnemyState extends State{
 	public void handleKeyPressed(KeyEvent e) {
 		switch(e.getKeyCode())
 		{
+		case KeyEvent.VK_ENTER:
+			try{
+				Stats stats = new Stats();
+				stats.initStats(Integer.parseInt(_maxHPString), Integer.parseInt(_strString),Integer.parseInt(_dexString),
+						Integer.parseInt(_conString), Integer.parseInt(_intString), Integer.parseInt(_wisString), 
+								Integer.parseInt(_chaString), Integer.parseInt(_sizeString), Integer.parseInt(_speedString));
+				EnemySheet enemy = new EnemySheet();
+				enemy.set_stats(stats);
+				Grid._enemies.add(enemy);
+			}catch(NullPointerException ne){
+				System.err.println("Didn't Fill out all the fields!");
+			}
 		case KeyEvent.VK_BACK_SPACE:
 			switch(_whichField){
 			case 1:
@@ -215,6 +230,18 @@ public class PositionEnemyState extends State{
 			case 6:
 				if(!_chaString.equals(""))
 					_chaString = _chaString.substring(0, _chaString.length()-1);
+				break;
+			case 7:
+				if(!_maxHPString.equals(""))
+					_maxHPString = _maxHPString.substring(0, _maxHPString.length()-1);
+				break;
+			case 8:
+				if(!_sizeString.equals(""))
+					_sizeString = _sizeString.substring(0, _sizeString.length()-1);
+				break;
+			case 9:
+				if(! _speedString.equals(""))
+					 _speedString =  _speedString.substring(0,  _speedString.length()-1);
 				break;
 			}
 			break;
@@ -255,6 +282,18 @@ public class PositionEnemyState extends State{
 			case 6:
 				if(_chaString.length() < 2)
 					_chaString += e.getKeyChar();
+				break;
+			case 7:
+				if(_maxHPString.length() < 3)
+					_maxHPString += e.getKeyChar();
+				break;
+			case 8:
+				if(_sizeString.length() < 1)
+					_sizeString += e.getKeyChar();
+				break;
+			case 9:
+				if(_speedString.length() < 3)
+					_speedString += e.getKeyChar();
 				break;
 			}
 		}
