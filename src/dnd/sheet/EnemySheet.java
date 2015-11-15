@@ -6,7 +6,8 @@ public class EnemySheet {
 
 	private String _name;
 	private Stats _stats;
-	private int _size;
+	private int _gold;
+	private int _exp;
 	
 	public EnemySheet() {
 	}
