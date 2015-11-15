@@ -53,7 +53,8 @@ public class CreateWallState extends State{
 		y = y - yTemp;
 		int yTile = (y-50)/24;
 
-		Grid._selectedTile = Grid._grid[xTile][yTile];
+		if(xTile < 26 && yTile < 26)
+			Grid._selectedTile = Grid._grid[xTile][yTile];
 
 		System.out.println("X Corner :" + xTile + " Y Corner: " + yTile);
 	}

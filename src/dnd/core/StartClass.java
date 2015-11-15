@@ -7,7 +7,6 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -15,7 +14,6 @@ import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
 
 import dnd.map.CreateWallState;
 import dnd.map.Grid;
@@ -28,8 +26,7 @@ public class StartClass extends Applet implements Runnable, KeyListener, MouseLi
 	public static String state;
 	private URL base;
 	private Graphics graphic;
-	private Image image, background1, background2, background3;
-	private Rectangle[] tile = new Rectangle[900];
+	private Image image;
 	public static State _curState;
 	
 
@@ -53,9 +50,6 @@ public class StartClass extends Applet implements Runnable, KeyListener, MouseLi
 		catch (Exception e)
 		{
 				System.err.println("Exception at StartClass init()\n");
-		}
-		for(int i=0; i < 900; i++){
-			tile[i] = new Rectangle(20,20);
 		}
 	}
 
