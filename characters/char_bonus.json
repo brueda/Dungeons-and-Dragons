@@ -1,0 +1,72 @@
+{
+    "humans": {
+        "str":0,
+        "dex":0,
+        "con":0,
+        "int":0,
+        "wis":0,
+        "cha": 0,
+        "speed": 30,
+        "size": 2
+    },
+    "dwarves": {
+        "str":0,
+        "dex":0,
+        "con":2,
+        "int":0,
+        "wis":0,
+        "cha": -2,
+        "speed": 20,
+        "size" : 2 
+    },
+    "elves": {
+        "str":0,
+        "dex":2,
+        "con":-2,
+        "int":0,
+        "wis":0,
+        "cha": 0,
+        "speed": 30,
+        "size": 2
+    },
+    "gnomes": {
+        "str":-2,
+        "dex":0,
+        "con":2,
+        "int":0,
+        "wis":0,
+        "cha": 0,
+        "speed": 20,
+        "size": 1 
+    },
+    "half-elves": {
+        "str":0,
+        "dex":0,
+        "con":0,
+        "int":0,
+        "wis":0,
+        "cha": 0,
+        "speed": 30,
+        "size": 2 
+    },
+    "half-orcs": {
+        "str":2,
+        "dex":0,
+        "con":0,
+        "int":-2,
+        "wis":0,
+        "cha": -2,
+        "speed": 30,
+        "size": 2 
+    },
+    "halflings": { 
+        "str":-2,
+        "dex":2,
+        "con":0,
+        "int":0,
+        "wis":0,
+        "cha": 0,
+        "speed": 20,
+        "size": 1 
+    }
+}

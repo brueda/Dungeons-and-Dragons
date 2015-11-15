@@ -1,0 +1,15 @@
+Name:
+Character Name:
+Gender:
+Height
+Weight
+Alignment:
+Class:
+Race:
+Roll.Strength:
+Roll.Dexterity:
+Roll.Constituation:
+Roll.Intelligence:
+Roll.Wisdom:
+Roll.Charisma:
+Speed:
